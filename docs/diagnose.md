@@ -43,10 +43,7 @@ a `vstest.console.exe.config` configuration file in the same directory as
 This technique is useful to capture logs for IDE/Editor scenarios.
 
 ```
-> where vstest.console
-d:\tmp\vstest.console.exe
-
-> notepad d:\tmp\vstest.console.exe.config
+> notepad C:\Program Files (x86)\Microsoft Visual Studio\Enterprise\Common7\IDE\Extensions\TestPlatform\vstest.console.exe.config
 ```
 
 Add the following content to the config file (`vstest.console.exe.config` or `testhost.exe.config`).
