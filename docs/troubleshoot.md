@@ -73,13 +73,23 @@ For .NETCore framework.
 
   Follow blog [here](https://blogs.msdn.microsoft.com/aseemb/2012/03/01/how-to-enable-ute-logs/).
 ### How to collect vstest logs from command line?
+> For VS >= 15.5
 Follow [Collect traces using command line](diagnose.md#collect-traces-using-command-line). Log file names appears on console like below example. 
 > Logging Vstest Diagnostics in file: C:\Users\samadala\src\vstest\test\TestAssets\SimpleTestProject3\log.txt<br>
 Logging TestHost Diagnostics in file: C:\Users\samadala\src\vstest\test\TestAssets\SimpleTestProject3\log.host.17-12-04_15-17-09_11057_4.txt
 
-### How to collect vstest logs from VSTest Task in VSTS?
+> For VS < 15.5
+  1. Follow blog [here](https://blogs.msdn.microsoft.com/aseemb/2012/03/01/how-to-enable-ute-logs/).
+  2. Logs available in %temp%vstest.*.TpTrace.log
 
-Pass `/diag:log.txt` in "Other console options" in VSTest Task options. This will create log files in current directory. And get log files using "Publish Build Artifacts" task to analyze.
+### How to collect vstest logs from VSTest Task in VSTS/TFS?
+> For VS >= 15.5
+Pass `/diag:log.txt` in "Other console options" in VSTest Task options. This will create log files in current directory(vstest logs in log.txt and testhosts logs in log.host.*.txt). And get log files using "Publish Build Artifacts" task to analyze.
+> For VS < 15.5
+  1. Follow blog [here](https://blogs.msdn.microsoft.com/aseemb/2012/03/01/how-to-enable-ute-logs/).
+  2. Pass `/diag:log.txt` in "Other console options" in VSTest Task options.
+  3. Queue the build.
+  3. Upload log.txt and %temp%/vstest.executionengine.<x86/x64>.TpTrace.log as artifact using "Publish Build Artifacts" task.
 
 ### How to collect assembly binding logs?
 1. Open "VS Developer command prompt in Elevated mode".
