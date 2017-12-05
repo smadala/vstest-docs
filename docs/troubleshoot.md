@@ -84,8 +84,11 @@ Logging TestHost Diagnostics in file: C:\Users\samadala\src\vstest\test\TestAsse
 
 ### How to collect vstest logs from VSTest Task in VSTS/TFS?
 > For VS >= 15.5
-Pass `/diag:log.txt` in "Other console options" in VSTest Task options. This will create log files in current directory(vstest logs in log.txt and testhosts logs in log.host.*.txt). And get log files using "Publish Build Artifacts" task to analyze.
+
+  Pass `/diag:log.txt` in "Other console options" in VSTest Task options. This will create log files in current directory(vstest.console.exe logs in log.txt and testhost.exe logs in log.host.*.txt). And get log files using "Publish Build Artifacts" task to analyze.
+
 > For VS < 15.5
+
   1. Follow blog [here](https://blogs.msdn.microsoft.com/aseemb/2012/03/01/how-to-enable-ute-logs/).
   2. Pass `/diag:log.txt` in "Other console options" in VSTest Task options.
   3. Queue the build.
