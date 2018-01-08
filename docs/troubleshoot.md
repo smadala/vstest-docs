@@ -102,5 +102,16 @@ Logging TestHost Diagnostics in file: C:\Users\samadala\src\vstest\test\TestAsse
 5. Refresh for logs.
 [![assembly binding logs](troubleshoot_images/assembly-binding-logs.png)](troubleshoot_images/vstest.console-overall-architecture.png)
 
+### How to analyze code coverage or run fakes tests without installing Visual Studio?
+
+1. Restore or download latest Microsoft.TestPlatform nuget package from https://www.nuget.org/packages/Microsoft.TestPlatform/.
+ <br> **Note**: Coded UI and UWP tests yet to support with Microsoft.TestPlatform
+2. Set Follwoing environment variables before running tests
+  ```powershell
+   PS C:> $env:COR_PROFILER_PATH="C:\packages\Microsoft.TestPlatform\15.6.0-preview-20171211-02\tools\net451\Common7\IDE\CommonExtensions\Microsoft\IntelliTrace\ProfilerProxy\amd64\Microsoft.IntelliTrace.ProfilerProxy.dll"
+   PS C:> $env:COR_PROFILER="{9317ae81-bcd8-47b7-aaa1-a28062e41c71}"
+   ```
+   Note: Choose `amd64` or `x86` Microsoft.IntelliTrace.ProfilerProxy.dll based on your tests target platform(vstest.console.exe  /platform option).
+3. Run tests using `vstest.console.exe` from directory `C:\packages\Microsoft.TestPlatform\15.6.0-preview-20171211-02\tools\net451\Common7\IDE\Extensions\TestPlatform\`
 
 
